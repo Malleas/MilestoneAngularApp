@@ -1,0 +1,16 @@
+<form (ngSubmit)="onSubmit()" #createForm="ngForm">
+  <p>Create a new Product</p><br/>
+  <div class="form-group">
+    <input type="text" class="form-control" id="productName" required [(ngModel)]="product.productName" name="productName" placeholder="Product Name">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="productDescription" required [(ngModel)]="product.productDesctiption" name="productDescription"  placeholder="Product Description">
+  </div>
+  <div class="form-group">
+    <input type="number" class="form-control" id="productPrice" required [(ngModel)]="product.productPrice" name="productPrice"  placeholder="Price Ex: 2.99">
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" id="productQuantity" required [(ngModel)]="product.productQuantity" name="productQuantity"  placeholder="Quantity Ex: 15">
+  </div>
+   <button type="submit" class="btn btn-primary" >Submit</button>
+</form>
