@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Product} from "../models/Product";
 import {ProductServiceService} from "../service/product-service.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-create-product',
@@ -9,17 +10,22 @@ import {ProductServiceService} from "../service/product-service.service";
 })
 export class CreateProductComponent implements OnInit {
 
-  product:Product | any
+  id: number = NaN
+  productName:string = ""
+  productDescription:string = ""
+  productPrice:number = 0
+  productQuantity:number = 0
 
-  constructor(private service:ProductServiceService) { }
+  constructor(private service:ProductServiceService, private redirect:Router) { }
 
   ngOnInit(): void {
   }
 
   public onSubmit(){
-    let newProduct = new Product(this.product.id, this.product.productName, this.product.productDescription, this.product.productPrice, this.product.productQuantity)
+    let newProduct = new Product(this.id, this.productName, this.productDescription, this.productPrice, this.productQuantity)
     this.service.createProduct(newProduct, (status:string) =>{
       window.alert(status)
+      this.redirect.navigate(['list-product'])
     })
   }
 

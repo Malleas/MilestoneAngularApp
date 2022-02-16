@@ -22,6 +22,14 @@ export class ProductServiceService {
     });
   }
 
+ // public findAllProducts(callback: any){
+ //  this.http.request<Product[]>('GET', this.hostname + "/products", {responseType: 'json'}).subscribe(data =>{
+ //    console.log(data)
+ //    callback(data)
+ //   })
+//
+ // }
+
   public findProductById(id:number, callback: any){
     this.http.get<Product>(this.hostname + "/products/" + id).subscribe((data) =>{
       let product = new Product(data['id'], data['productName'], data['productDescription'], data['productPrice'], data['productQuantity'])
